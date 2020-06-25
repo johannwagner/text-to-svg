@@ -1,6 +1,6 @@
 {
   "name": "@johannwagner/text-to-svg",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Convert text to SVG path without native dependence.",
   "main": "index.js",
   "files": [
