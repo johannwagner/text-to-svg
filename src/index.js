@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Hideki Shiro
  */
 
-import opentype from 'opentype.js';
+import { loadSync as openTypeLoadSync, load as openTypeLoad } from 'opentype.js';
 
 const DEFAULT_FONT = require('path').join(__dirname, '../fonts/ipag.ttf');
 
@@ -24,11 +24,11 @@ export default class TextToSVG {
   }
 
   static loadSync(file = DEFAULT_FONT) {
-    return new TextToSVG(opentype.loadSync(file));
+    return new TextToSVG(openTypeLoadSync(file));
   }
 
   static load(url, cb) {
-    opentype.load(url, (err, font) => {
+    openTypeLoad(url, (err, font) => {
       if (err !== null) {
         return cb(err, null);
       }
