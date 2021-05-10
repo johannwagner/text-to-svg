@@ -4,7 +4,6 @@
 
 import { loadSync as openTypeLoadSync, load as openTypeLoad } from 'opentype.js';
 
-const DEFAULT_FONT = require('path').join(__dirname, '../fonts/ipag.ttf');
 
 // Private method
 
@@ -23,7 +22,11 @@ export default class TextToSVG {
     this.font = font;
   }
 
-  static loadSync(file = DEFAULT_FONT) {
+  static loadSync(file) {
+    if (!file) {
+      throw Error('file must be specified.');
+    }
+
     return new TextToSVG(openTypeLoadSync(file));
   }
 
